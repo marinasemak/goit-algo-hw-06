@@ -32,7 +32,11 @@ class Record:
         self.phones.append(Phone(phone))
 
     def edit_phone(self, old_phone, new_phone):
-        pass
+        for phone in self.phones:
+            if str(phone) == old_phone:
+                self.phones[phone] = Phone(new_phone)
+            else:
+                print('ValueError')
 
     def remove_phone(self, phone):
         pass
@@ -44,9 +48,11 @@ class Record:
 class AddressBook(UserDict):
     def add_record(self, record):
         self.data[record.name.value] = record
+        return record
 
     def find(self, value: str):
         if value in self.data:
+            print(self.data[value])
             return self.data[value]
         else:
             return None
@@ -56,8 +62,8 @@ class AddressBook(UserDict):
 book = AddressBook()
 
 # Створення запису для John
-john_record = Record("")
-john_record.add_phone("1")
+john_record = Record("John")
+john_record.add_phone("1234567890")
 # john_record.add_phone("5555555555")
 
 # Додавання запису John до адресної книги
@@ -73,5 +79,6 @@ print(book)
 
 # Знаходження та редагування телефону для John
 john = book.find("John")
+john.edit_phone("1234567890", "1112223333")
 print(john)
-# john.edit_phone("1234567890", "1112223333")
+# print(book)
