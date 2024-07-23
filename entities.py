@@ -1,4 +1,8 @@
 class Field:
+    """
+    Basic class for records fields
+    """
+
     def __init__(self, value: str):
         self.value = value
 
@@ -7,9 +11,12 @@ class Field:
 
 
 class Name(Field):
+    """
+    Class for saving and validating contact names
+    """
+
     def __init__(self, value: str):
         super().__init__(value)
-        print(f"asasasa  {len(self.value)}")
         self.validate_name()
 
     def validate_name(self):
@@ -18,12 +25,14 @@ class Name(Field):
 
 
 class Phone(Field):
+    """
+    Class for saving and validating contact phones
+    """
+
     def __init__(self, value: str):
         super().__init__(value)
-        print(f"asasasa  {len(self.value)}")
         self.validate_phone()
 
     def validate_phone(self):
-        print(len(self.value))
         if len(self.value) != 10:
             raise ValueError("Phone number must be 10 digits long")

@@ -3,11 +3,16 @@ from entities import Name, Phone
 
 
 class Record:
+    """
+    Save contact info including name and phones
+    """
+
     def __init__(self, name):
         self.name = Name(name)
         self.phones = []
 
-    def add_phone(self, phone):
+    def add_phone(self, phone: str):
+        """ """
         self.phones.append(Phone(phone))
 
     def edit_phone(self, old_phone: str, new_phone: str):
@@ -35,13 +40,26 @@ class Record:
 
 
 class AddressBook(UserDict):
+    """
+    Save and manage records
+    """
+
     def add_record(self, record):
+        """
+        Add record to self.data
+        """
         self.data[record.name.value] = record
         return record
 
     def find(self, value: str):
+        """
+        Find record by name
+        """
         return self.data.get(value, None)
 
     def delete(self, value: str):
+        """
+        Delete record by name
+        """
         if value in self.data:
             del self.data[value]
